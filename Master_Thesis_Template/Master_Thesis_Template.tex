@@ -1,0 +1,74 @@
+\documentclass[twoside,openright,12pt,a4paper]{book}
+\usepackage[includeheadfoot,a4paper,inner=3.81cm,outer=2.54cm,top=2.54cm,bottom=2.54cm]{geometry}
+%%==============
+\usepackage{umthesis}
+%%==============
+\usepackage[style=ieee,sorting=none,backend=biber]{biblatex}%本人使用ieee的标注形式。如需要其他格式，请自行修改。需要放在主文件中，使用biber编译
+\addbibresource{reference.bib}
+%%==============
+\onehalfspacing
+%%==============
+\input{Acronyms}
+\begin{document}
+\input{Cover}
+\input{Accessary}
+%%==============
+\pagenumbering{roman}
+\pagestyle{umpreliminary}
+%%==============
+\cleardoublepage
+\input{Index}
+\thispagestyle{umpreliminary}
+%%==============
+\cleardoublepage
+\input{Acknowledgements}
+\thispagestyle{umpreliminary}
+%%==============
+\cleardoublepage
+\pagenumbering{arabic}
+\pagestyle{umplain}%文本页用umplain
+%%==============
+%\newgeometry{includeheadfoot, inner=3.81cm,outer=2.54cm,top=2.54cm,bottom=2.54cm}定义新的页面，和全局一样不用设定 
+%\setlength{\headheight}{15pt}.%设置页眉高度，不需要用到
+%%==============
+%\theoremstyle{definition}
+%\newtheorem{defn}{Definition}[section]
+%\newtheorem{conj}{Conjecture}[section]
+%\newtheorem{exmp}{Example}[section]
+%\theoremstyle{theorem}
+%\newtheorem{thm}{Theorem}[section]
+%\newtheorem{lem}[thm]{Lemma}
+%\newtheorem{prop}[thm]{Proposition}
+%\newtheorem*{cor}{Corollary}
+%数学环境定义
+%%==============
+\doublespacing
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+	\thispagestyle{umempty}
+	\global\@topnum\z@
+	\@afterindentfalse
+	\secdef\@chapter\@schapter}
+\makeatother
+\thispagestyle{umempty}
+%%==============
+\input{Chapter/chapter1}
+\input{Chapter/chapter2}
+\input{Chapter/chapter3}
+\input{Chapter/chapter4}
+\input{Chapter/chapter5}
+\input{Chapter/chapter6}
+%%==============
+\small\singlespacing\clearpage\phantomsection
+%将BIBLIOGRAPHY添加到目录中，位置不可以改变，不然会影响目录的位置
+\addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
+\printbibliography[title=BIBLIOGRAPHY]
+%%==============
+\appendix
+\renewcommand{\appendixname}{Appendix}
+\titlecontents{chapter}[0pt]{\normalsize}{\MakeUppercase{Appendix} \thecontentslabel: }{}{\titlerule*[0.4pc]{.}\contentspage\hspace*{0pt}}[]%重新设立标题格式，防止污染
+\input{Chapter/appendix1}
+\input{Chapter/appendix2}
+%%==============
+\input{Chapter/publications}
+\end{document}

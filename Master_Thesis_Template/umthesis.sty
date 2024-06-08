@@ -1,0 +1,79 @@
+%%===Modified By AN61，Source From William WU===%本文均采用utf-8的上位包进行对某些包进行替代，本文档采用lualatex进行编译%This article uses UTF-8 upper-level packages to replace some packages, and this document is compiled by Lualatex. The Marking for function use Chinese.
+\usepackage{polyglossia}%使用polyglossia管理语言
+\setmainlanguage{english}%使用polyglossia标定主要语言
+\usepackage{fontspec}%语言管理包，中文使用ctex
+\usepackage{glossaries}%替代acronym进行单词的缩写工作，负责索引和注释等工作，更复杂。代替datagidx。
+%=========================
+\usepackage{afterpage}%保证图片在一页纸当中
+\usepackage{setspace}%控制各种文本的行距和插入空行等
+%\usepackage{layouts}%show details of the paper,应该用不上
+\usepackage{titletoc}%制作目录的包
+\usepackage{titlesec}%titlesec宏包的uppercase 选项会将所有标题文本转换为大写形式。
+\usepackage[titletoc]{appendix}%使用 titletoc 选项后，appendix 宏包还会影响目录中附录章节的格式。
+\setcounter{secnumdepth}{4}%设置章节编号的深度。默认情况下，LaTeX 只对编号深度小于或等于 3 的章节进行编号，通过此命令，你可以将编号深度扩展到包括第四级的章节
+\setcounter{tocdepth}{4}%设置目录的深度，以决定在目录中显示的章节级别。默认情况下，LaTeX 会将目录的深度设置为3,通过此命令，你可以将目录的深度扩展到包括第四级的章节
+
+% 章节标题格式
+\titlecontents{chapter}[0em]{\normalsize}{\MakeUppercase{\chaptertitlename} \thecontentslabel: }{}{\titlerule*[0.4pc]{.}\contentspage\hspace*{0pt}}[]
+\titlecontents{section}[1.5em]{\normalsize}{\thecontentslabel\ }{}{\titlerule*[0.4pc]{.}\contentspage\hspace*{0pt}}[]
+\titlecontents{subsection}[3.8em]{\normalsize}{\thecontentslabel\ }{}{\titlerule*[0.4pc]{.}\contentspage\hspace*{0pt}}[]
+\titlecontents{subsubsection}[5.7em]{\normalsize}{\thecontentslabel\ }{}{\titlerule*[0.4pc]{.}\contentspage\hspace*{0pt}}[]
+
+%设置每章标题的格式
+\titleformat{\chapter}[hang]{\centering\normalsize\uppercase}{\MakeUppercase{\chaptertitlename} \thechapter\ :}{1em}{}
+\titlespacing{\chapter}{0pt}{*1.5}{*4}{}
+\titleformat{\section}[hang]{\normalsize\uppercase}{\thesection}{1em}{}
+\titlespacing{\section}{0pt}{*1.5}{\wordsep}{}
+\titleformat{\subsection}[hang]{\normalsize\scshape}{\thesubsection}{1em}{}
+\titlespacing{\subsection}{0pt}{*1.5}{\wordsep}{}
+\titleformat{\subsubsection}[hang]{\normalsize}{\thesubsubsection}{1em}{}
+\titlespacing{\subsubsection}{0pt}{*1.5}{\wordsep}{}
+%=====================================
+\usepackage{calc}%计算文档的宽度和文本的宽度
+\usepackage{caption}%设置和定制图表和浮动体的标题
+\captionsetup{font=singlespacing,listformat=simple,justification=centering}%设置caption包的参数
+\usepackage{subcaption}%设置和定制子章节图表和浮动体的标题
+%\usePackage{amsmath}% AMS数学字体, 环境等
+%\usePackage{mathtools}% align需要，进行数学的排版，是amsmath宏包的扩展
+\usepackage{unicode-math}%进行数学公式的编写,暂时替代ams系列包,与上面的两个数学包冲突，只用此包
+\usepackage{tikz}%进行简单的图表绘制
+\usepackage{siunitx}%提供了一系列命令和选项，用于格式化数字、处理单位、设置数值格式等。
+\usepackage{amsthm}%数学环境的应用
+\usetikzlibrary{arrows, positioning}%arrows库和positioning库
+\usepackage{xurl}%进行url的管理
+\usepackage{graphicx}%进行图片的插入管理
+\hyphenation{op-tical net-works semi-conduc-tor}%进行自定义断字规则的设置
+%======================================
+%\usepackage{grffile}%进行特殊文字的加载，lualatex和xelatex通常不需要
+\usepackage{tabularx}%表格自动调整列宽以适应页面宽度
+\usepackage{booktabs}%创建符合学术规范且外观漂亮的表格
+\usepackage{longtable}%创建跨页显示的大型表格
+\usepackage{multirow}%表格中创建跨行单元格
+\renewcommand{\multirowsetup}{\centering}%重新定义multirowsetup 命令，以更改 multirow 宏包中多行单元格的默认设置。确保多行内容在单元格中水平居中显示。
+\usepackage{adjustbox}%adjustbox相对于rotating提供了更广泛的图形调整功能，包括旋转、缩放、裁剪等。
+\usepackage[bookmarks=true,pagebackref=false]{hyperref}%hyperref 宏包，用于创建超链接、书签等功能
+\hypersetup{pdfdisplaydoctitle=true,bookmarksnumbered=true,colorlinks=true,citecolor=green,hidelinks,bookmarksopen=true,pdfauthor={},pdftitle ={},pdfsubject={},pdfkeywords={}}%hyperref宏包设置
+\usepackage{xstring}%用于基本的字符串处理任务，如提取子字符串、比较字符串、计算字符串长度等。复杂的用regex
+%======================================
+\usepackage{fancyhdr}%管理页眉和页脚
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{umpreliminary}{
+	\fancyhf{}
+	\fancyfoot[CO,CE]{\thepage}}
+\fancypagestyle{umplain}{
+	\fancyhf{}
+	\fancyhead[CO,CE]{\thepage}}
+\fancypagestyle{ummain}{
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}}
+\fancypagestyle{umempty}{
+	\fancyhf{}} %设计不同的页眉和页脚
+%=======================================
+\usepackage{pdflscape}%pdflscape 宏包可以正确地旋转页面以适应 PDF 输出。它在生成 PDF 文件时会添加正确的页面旋转标记，以确保在 PDF 阅读器中显示正确的页面方向。
+\usepackage{threeparttable}%宏包提供了创建带有表格注释的功能。
+\usepackage{enumitem}%enumitem 宏包提供了比 enumerate 更灵活和强大的列表定制功能。通过 enumitem，你可以轻松地调整有序列表中的编号样式、标签、间距、缩进、对齐方式等。
+\usepackage{indentfirst}%用于在文档中的每个段落的开头都缩进，即使是第一个段落
+\usepackage{ragged2e}%提供了对文本对齐的更多控制，特别是在两端对齐方面。
+
+
+
