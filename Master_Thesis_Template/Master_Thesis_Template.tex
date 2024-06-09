@@ -1,0 +1,56 @@
+\documentclass[twoside,12pt,a4paper,openright]{book}
+\usepackage{geometry}%用来设计页面
+\usepackage{umthesis}
+\usepackage[style=ieee,sorting=none,backend=biber]{biblatex}
+\geometry{includeheadfoot,a4paper,,inner=3.81cm,outer=2.54cm,top=2.54cm,bottom=2.54cm,headheight=15pt}
+\addbibresource{reference.bib}
+%======================================
+\onehalfspacing%1.5倍行距
+%======================================
+\input{Acronyms}%导入缩写词表
+\begin{document}
+	\input{Cover}
+	\input{Accessary}
+	\cleardoublepage
+	\pagenumbering{roman}
+	\pagestyle{umpreliminary}
+%======================================
+	\input{Index}
+	\input{Acknowledgements}
+%======================================
+	\cleardoublepage
+	\pagenumbering{arabic}
+	\pagestyle{umplain}
+	%\setlength{\headheight}{15pt}.
+	\doublespacing
+%======================================
+%章节开头的判断程序
+	\makeatletter
+	\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+		\thispagestyle{umempty}
+		\global\@topnum\z@
+		\@afterindentfalse
+		\secdef\@chapter\@schapter}
+	\makeatother
+	\thispagestyle{umempty}
+%=======================================
+	\input{Chapter/chapter1}
+	\input{Chapter/chapter2}
+	\input{Chapter/chapter3}
+	\input{Chapter/chapter4}
+	\input{Chapter/chapter5}
+	\input{Chapter/chapter6}
+%========================================
+	\small\singlespacing\clearpage\phantomsection
+	%将BIBLIOGRAPHY添加到目录中，位置不可以改变，不然会影响目录的位置
+	\printbibliography[title=BIBLIOGRAPHY]
+	\addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
+%========================================
+	\appendix
+	\renewcommand{\appendixname}{Appendix}
+	\titlecontents{chapter}[0em]{\normalsize}{\MakeUppercase{Appendix} \thecontentslabel: }{}{\titlerule*[0.4pc]{.}\contentspage\hspace*{0pt}}[]%重新设立目录Appendix标题格式，防止污染
+	\input{Chapter/appendix1}
+	\input{Chapter/appendix2}
+	%%==============
+	\input{Chapter/publications}
+\end{document}

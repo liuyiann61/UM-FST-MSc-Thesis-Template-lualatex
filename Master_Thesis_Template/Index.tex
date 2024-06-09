@@ -1,0 +1,17 @@
+\renewcommand{\contentsname}{\hfill TABLE OF CONTENTS\hfill}
+\tableofcontents
+%%==============================
+\cleardoublepage%保证文档在奇数页
+\renewcommand{\listfigurename}{\hfill LIST OF FIGURES\hfill}
+\listoffigures
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+%%==============================
+\cleardoublepage
+\renewcommand{\listtablename}{\hfill LIST OF TABLES\hfill}
+\listoftables
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
+%%==============================
+% 打印缩写列表
+\glsaddall%将指定类型（这里是 acronym）的所有条目都标记为已使用
+\printglossary[type=\acronymtype,title={List of Abbreviations}]
+\addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
