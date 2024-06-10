@@ -1,4 +1,4 @@
-# UM-FST-MSc-Thesis-LaTeX-TMPL-utf-8-biblatex
+# UM-FST-MSc-Thesis-LaTeX-TMPL-utf-8
 This is a LaTeX template for a master's thesis, which follows the requirements of the Faculty of Science and Technology (FST) of the University of Macao.
 This template adds a .latexmkrc file. It can use latexmk compiler to automatically complete the template.
 This template uses luatex/xetex, biblatex, and glossaries. 
